@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>IP Information Demo</title>
+    <style>
+        body {
+            background: #101827;
+            color: white;
+            font-family: Arial;
+            text-align: center;
+            padding-top: 100px;
+        }
+        .card {
+            background: #1e293b;
+            padding: 35px;
+            border-radius: 15px;
+            display: inline-block;
+        }
+        h1 { color: #38bdf8; }
+    </style>
+</head>
+<body>
+    <div class="card">
+        <h1>IP Information Demo</h1>
+        <p>This page displays your public IP.</p>
+        <p>Your IP address:</p>
+        <h2 id="ip">Loading...</h2>
+    </div>
+
+    <script>
+        fetch('https://api.ipify.org?format=json')
+        .then(response => response.json())
+        .then(data => {
+            document.getElementById('ip').textContent = data.ip;
+        })
+        .catch(() => {
+            document.getElementById('ip').textContent = 'Unavailable';
+        });
+    </script>
+</body>
+</html>
